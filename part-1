@@ -1,0 +1,33 @@
+php artisan make:auth
+Make a migration for admin
+Duplicate user model and give name admin
+
+Open config/auth.php
+    In guards section make a guard as like below
+        'admin' => [
+                'driver' => 'session',
+                'provider' => 'admins',
+            ],
+
+            'admin-api' => [
+                'driver' => 'token',
+                'provider' => 'admins',
+                'hash' => false,
+            ]
+
+    In providers section make a provider as like below
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+    In passwords section make a password as like below
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+Put $guard = 'admin' in admin model
+
+Make controller Admin/HomeController and make index function to return admin dashboard view
+Make a construct method in Admin/HomeController and put [$this->middleware('auth:admin')] in construct method

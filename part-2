@@ -1,0 +1,8 @@
+Make a folder name admin and copy existing home view, auth, layouts folders and paste into admin directory
+
+Make a controller Admin/LoginController
+use AuthenticatesUsers in Admin/LoginController
+Make method showLoginForm to return admin login view
+Make method login to complete login job
+
+Add construct method in Admin/LoginController and add [$this->middleware('guest:admin');] in construct
