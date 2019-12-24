@@ -1,0 +1,4 @@
+Make a method unauthenticated in Exceptions/Handler.php
+Open Middleware/RedirectIfAuthenticated.php
+
+Modify handle function
